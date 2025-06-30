@@ -1,0 +1,6 @@
+WorkerID,WorkerName,Skills,AvailableSlots,MaxLoadPerPhase,WorkerGroup,QualificationLevel
+W01,Alice,"react,typescript,planning","[1,2,3,4,5]",3,DevTeamA,Senior
+W02,Bob,"python,sql,planning","[1,2,3]",2,DevTeamA,Mid
+W03,Charlie,"figma,design,writing","[2,3,4]",3,DesignTeam,Senior
+W04,Dana,"docker,aws,ci/cd","[3,4,5]",2,DevOps,Lead
+W05,Eve,"communication,planning","[1,2,5]",3,SalesTeam,Junior

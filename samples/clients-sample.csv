@@ -1,0 +1,5 @@
+ClientID,ClientName,PriorityLevel,RequestedTaskIDs,GroupTag,AttributesJSON
+C01,Innovate Corp,1,"T01,T03",Tier1,"{""industry"": ""Tech""}"
+C02,BuildWell Ltd,3,"T02,T05",Tier2,"{""industry"": ""Construction""}"
+C03,DataDriven Inc,6,"T04,T06",Tier1,"{""industry"": ""Finance""}"
+C04,MarketFirst Co,2,T01,Tier3,"{""industry"": ""Retail""}"
