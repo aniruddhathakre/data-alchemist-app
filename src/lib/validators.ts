@@ -29,7 +29,6 @@ export function validateClientPriority(
 }
 
 // --- Duplicate ID Validators ---
-
 function findDuplicateIds(data: DataRow[], idField: string): string[] {
   const ids = data.map((row) => String(row[idField]));
   const uniqueIds = new Set(ids);
@@ -88,7 +87,6 @@ export function validateDuplicateTaskIDs(
 }
 
 // --- Data Format Validators ---
-
 export function validateTaskDuration(tasksData: DataRow[]): ValidationError[] {
   const errors: ValidationError[] = [];
   tasksData.forEach((task) => {
@@ -119,12 +117,14 @@ export function validateClientAttributesJSON(
         throw new Error("is empty");
       }
       JSON.parse(jsonString);
-    } catch (_e) {
-      // FIX: Changed 'e' to '_e' to signal it is intentionally unused.
+    } catch (e) {
+      // THE FIX: We are now using the error variable 'e'.
       errors.push({
         entityId: clientId,
         field: "AttributesJSON",
-        message: `AttributesJSON is not valid JSON.`,
+        message: `AttributesJSON is not valid JSON. Error: ${
+          (e as Error).message
+        }`,
       });
     }
   });
@@ -132,7 +132,6 @@ export function validateClientAttributesJSON(
 }
 
 // --- Cross-File Validators ---
-
 export function validateUnknownTaskReferences(
   clientData: DataRow[],
   tasksData: DataRow[]
