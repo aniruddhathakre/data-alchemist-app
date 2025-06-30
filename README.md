@@ -6,7 +6,7 @@ _A smart tool to turn messy spreadsheet data into a clean, validated, and rule-b
 
 This project is a Next.js web application built for the Digitalyz Software Engineering Intern assignment. It's designed to help non-technical users take raw data from multiple sources, clean it up, and configure it for downstream use, all with the help of AI.
 
-**[➡️ Live Demo Link]**
+**[➡️ Live Demo Link - https://data-alchemist-opal.vercel.app/]**
 
 ## Key Features
 
@@ -41,7 +41,7 @@ To get this project running on your own machine, follow these steps:
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/aniruddhathakre/data-alchemist-app](https://github.com/aniruddhathakre/data-alchemist-app)
+    git clone [https://github.com/aniruddhathakre/data-alchemist-app]
     ```
 
 2.  **Navigate to the project directory:**
