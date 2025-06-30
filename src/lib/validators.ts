@@ -13,7 +13,6 @@ export function validateClientPriority(
   const errors: ValidationError[] = [];
 
   clientData.forEach((client) => {
-    // FIX: We explicitly convert the 'unknown' values to the types we expect.
     const priority = Number(client.PriorityLevel);
     const clientId = String(client.ClientID);
 
@@ -31,9 +30,7 @@ export function validateClientPriority(
 
 // --- Duplicate ID Validators ---
 
-// A generic helper function to find duplicates in any array of data.
 function findDuplicateIds(data: DataRow[], idField: string): string[] {
-  // FIX: Cast each ID to a string to ensure type safety.
   const ids = data.map((row) => String(row[idField]));
   const uniqueIds = new Set(ids);
   if (uniqueIds.size === ids.length) {
@@ -51,7 +48,6 @@ function findDuplicateIds(data: DataRow[], idField: string): string[] {
   return Array.from(duplicates);
 }
 
-// Validators for each entity type that use the generic helper.
 export function validateDuplicateClientIDs(
   clientData: DataRow[]
 ): ValidationError[] {
@@ -123,7 +119,8 @@ export function validateClientAttributesJSON(
         throw new Error("is empty");
       }
       JSON.parse(jsonString);
-    } catch (e) {
+    } catch (_e) {
+      // FIX: Changed 'e' to '_e' to signal it is intentionally unused.
       errors.push({
         entityId: clientId,
         field: "AttributesJSON",
