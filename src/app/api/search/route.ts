@@ -62,7 +62,8 @@ export async function POST(request: Request) {
 
     // This is a defensive step. Sometimes the AI will wrap its response in markdown backticks.
     // This logic cleans up the string before we try to parse it as JSON.
-    let cleanedJsonString = responseText
+    // FIX: Changed 'let' to 'const' as this variable is not reassigned.
+    const cleanedJsonString = responseText
       .trim()
       .replace(/^```json/, "")
       .replace(/^```/, "")

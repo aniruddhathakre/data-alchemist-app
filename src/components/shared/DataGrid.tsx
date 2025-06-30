@@ -7,8 +7,9 @@ import {
   CellValueChangedEvent,
   CellClassParams,
 } from "ag-grid-community";
+// FIX: Removed 'ValidationError' as it was not being used in this file.
 import { useAppStore, DataRow } from "@/lib/store";
-import { runAllValidators, ValidationError } from "@/lib/validators";
+import { runAllValidators } from "@/lib/validators";
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
@@ -30,8 +31,11 @@ export function DataGrid({ rowData, fileType }: DataGridProps) {
   const cellClassRules = useMemo(
     () => ({
       "cell-error": (params: CellClassParams) => {
-        const cell_id =
-          params.data.ClientID || params.data.WorkerID || params.data.TaskID;
+        // FIX: Explicitly cast the data and ID fields to String to ensure type safety.
+        const rowData = params.data as DataRow;
+        const cell_id = String(
+          rowData.ClientID || rowData.WorkerID || rowData.TaskID
+        );
         const cell_field = params.colDef.field;
 
         return validationErrors.some(

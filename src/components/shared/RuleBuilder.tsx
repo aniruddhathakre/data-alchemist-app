@@ -134,8 +134,12 @@ export function RuleBuilder() {
             </SelectTrigger>
             <SelectContent>
               {tasksData.map((task) => (
-                <SelectItem key={task.TaskID} value={task.TaskID}>
-                  {task.TaskName} ({task.TaskID})
+                // FIX: We cast the unknown values to String to satisfy TypeScript.
+                <SelectItem
+                  key={String(task.TaskID)}
+                  value={String(task.TaskID)}
+                >
+                  {String(task.TaskName)} ({String(task.TaskID)})
                 </SelectItem>
               ))}
             </SelectContent>
@@ -185,8 +189,9 @@ export function RuleBuilder() {
                 ? clientGroups
                 : workerGroups
               ).map((group) => (
-                <SelectItem key={group} value={group}>
-                  {group}
+                // FIX: We cast the unknown value to String.
+                <SelectItem key={String(group)} value={String(group)}>
+                  {String(group)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -212,7 +217,7 @@ export function RuleBuilder() {
         </CardContent>
       </Card>
 
-      {/* --- NEW: Load Limit Rule Card --- */}
+      {/* --- Load Limit Rule Card --- */}
       <Card>
         <CardHeader>
           <CardTitle className="text-base">Load Limit</CardTitle>
@@ -227,8 +232,9 @@ export function RuleBuilder() {
             </SelectTrigger>
             <SelectContent>
               {workerGroups.map((group) => (
-                <SelectItem key={group} value={group}>
-                  {group}
+                // FIX: We cast the unknown value to String.
+                <SelectItem key={String(group)} value={String(group)}>
+                  {String(group)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -254,12 +260,12 @@ export function RuleBuilder() {
         </CardContent>
       </Card>
 
-      {/* --- Visual separator to distinguish manual vs AI rule creation --- */}
+      {/* --- Visual separator --- */}
       <div className="pt-4">
         <Separator />
       </div>
 
-      {/* --- AI RULE GENERATION CARD --- */}
+      {/* --- AI Rule Generation Card --- */}
       <Card>
         <CardHeader>
           <CardTitle className="text-base">
